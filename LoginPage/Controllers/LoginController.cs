@@ -11,7 +11,7 @@ namespace LoginPage.Controllers
         // GET: Login
         public string Index()
         {
-            return "Amarnath";
+            return "Amarnathaa";
         }
     }
 }
