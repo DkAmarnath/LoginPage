@@ -1,0 +1,145 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Jan192019Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <Function Name="GetTaskdetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserName" Type="varchar" Mode="In" />
+          <Parameter Name="Role" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="InsertRegisterdetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Lastname" Type="varchar" Mode="In" />
+          <Parameter Name="Firstname" Type="varchar" Mode="In" />
+          <Parameter Name="UserName" Type="varchar" Mode="In" />
+          <Parameter Name="Password" Type="varchar" Mode="In" />
+          <Parameter Name="Email" Type="varchar" Mode="In" />
+          <Parameter Name="Role" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="InsertTaskdetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserName" Type="varchar" Mode="In" />
+          <Parameter Name="TaskDescription" Type="varchar" Mode="In" />
+          <Parameter Name="TaskDate" Type="datetime" Mode="In" />
+          <Parameter Name="TaskST" Type="varchar" Mode="In" />
+          <Parameter Name="TaskET" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="LoginCheck" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserName" Type="varchar" Mode="In" />
+          <Parameter Name="Password" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Loginlogoutdetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserName" Type="varchar" Mode="In" />
+          <Parameter Name="Role" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="LoginoutdetailsInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserName" Type="varchar" Mode="In" />
+          <Parameter Name="LoginTime" Type="datetime" Mode="In" />
+          <Parameter Name="Logoutime" Type="datetime" Mode="In" />
+        </Function>
+        <EntityContainer Name="Jan192019ModelStoreContainer" />
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Jan192019Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="Jan192019Entities" annotation:LazyLoadingEnabled="true" >
+          <FunctionImport Name="GetTaskdetails" ReturnType="Collection(Jan192019Model.GetTaskdetails_Result)">
+            <Parameter Name="UserName" Mode="In" Type="String" />
+            <Parameter Name="Role" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="InsertRegisterdetails" ReturnType="Collection(String)">
+            <Parameter Name="Lastname" Mode="In" Type="String" />
+            <Parameter Name="Firstname" Mode="In" Type="String" />
+            <Parameter Name="UserName" Mode="In" Type="String" />
+            <Parameter Name="Password" Mode="In" Type="String" />
+            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="Role" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="InsertTaskdetails" ReturnType="Collection(String)">
+            <Parameter Name="UserName" Mode="In" Type="String" />
+            <Parameter Name="TaskDescription" Mode="In" Type="String" />
+            <Parameter Name="TaskDate" Mode="In" Type="DateTime" />
+            <Parameter Name="TaskST" Mode="In" Type="String" />
+            <Parameter Name="TaskET" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="LoginCheck" ReturnType="Collection(String)">
+            <Parameter Name="UserName" Mode="In" Type="String" />
+            <Parameter Name="Password" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Loginlogoutdetails" ReturnType="Collection(Jan192019Model.Loginlogoutdetails_Result)">
+            <Parameter Name="UserName" Mode="In" Type="String" />
+            <Parameter Name="Role" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="LoginoutdetailsInsert">
+            <Parameter Name="UserName" Mode="In" Type="String" />
+            <Parameter Name="LoginTime" Mode="In" Type="DateTime" />
+            <Parameter Name="Logoutime" Mode="In" Type="DateTime" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="GetTaskdetails_Result">
+          <Property Type="String" Name="UserName" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="TaskDescription" Nullable="true" MaxLength="500" />
+          <Property Type="DateTime" Name="TaskDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="TaskST" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="TaskET" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="Loginlogoutdetails_Result">
+          <Property Type="String" Name="UserName" Nullable="true" MaxLength="100" />
+          <Property Type="DateTime" Name="LoginTime" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="LogOutTime" Nullable="true" Precision="23" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Jan192019ModelStoreContainer" CdmEntityContainer="Jan192019Entities" >
+          <FunctionImportMapping FunctionImportName="GetTaskdetails" FunctionName="Jan192019Model.Store.GetTaskdetails">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Jan192019Model.GetTaskdetails_Result">
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="TaskDescription" ColumnName="TaskDescription" />
+                <ScalarProperty Name="TaskDate" ColumnName="TaskDate" />
+                <ScalarProperty Name="TaskST" ColumnName="TaskST" />
+                <ScalarProperty Name="TaskET" ColumnName="TaskET" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="InsertRegisterdetails" FunctionName="Jan192019Model.Store.InsertRegisterdetails" />
+          <FunctionImportMapping FunctionImportName="InsertTaskdetails" FunctionName="Jan192019Model.Store.InsertTaskdetails" />
+          <FunctionImportMapping FunctionImportName="LoginCheck" FunctionName="Jan192019Model.Store.LoginCheck" />
+          <FunctionImportMapping FunctionImportName="Loginlogoutdetails" FunctionName="Jan192019Model.Store.Loginlogoutdetails">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Jan192019Model.Loginlogoutdetails_Result">
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="LoginTime" ColumnName="LoginTime" />
+                <ScalarProperty Name="LogOutTime" ColumnName="LogOutTime" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="LoginoutdetailsInsert" FunctionName="Jan192019Model.Store.LoginoutdetailsInsert" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -7,10 +7,11 @@ using System.Web.Http;
 
 namespace LoginPage.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class ValuesController : ApiController
     {
         // GET api/values
+        [Route("api/getnames")]
         public IEnumerable<string> Get()
         {
             return new string[] { "value1", "value2" };
@@ -35,6 +36,16 @@ namespace LoginPage.Controllers
         // DELETE api/values/5
         public void Delete(int id)
         {
+        }
+
+        [HttpGet]
+        [Route("api/logincheck")]
+        public string GetLogindetails(string Username,string password)
+        {
+            Jan192019Entities db = new Jan192019Entities();
+            var s = db.LoginCheck(Username, password);
+            return s.FirstOrDefault();
+
         }
     }
 }
